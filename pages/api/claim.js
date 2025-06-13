@@ -13,7 +13,9 @@ module.exports = async (req, res) => {
     return;
   }
 
-  // Fetch next unused POAP link for this chip
+  // Log the incoming chip ID for debug
+  console.log("Incoming chip ID:", chipId);
+
   const { data: poapLinks, error } = await supabase
     .from('poap_links')
     .select('*')
@@ -21,14 +23,21 @@ module.exports = async (req, res) => {
     .eq('used', false)
     .limit(1);
 
-  if (error || !poapLinks || poapLinks.length === 0) {
+  if (error) {
+    console.error("Supabase error:", error);
+    res.status(500).send("Error querying Supabase.");
+    return;
+  }
+
+  if (!poapLinks || poapLinks.length === 0) {
+    console.log("No unused POAP links found for chip:", chipId);
     res.status(200).send("All POAPs have been claimed for this chip.");
     return;
   }
 
   const poap = poapLinks[0];
+  console.log("Serving POAP link:", poap.link);
 
-  // Mark link as used
   await supabase
     .from('poap_links')
     .update({
@@ -37,7 +46,7 @@ module.exports = async (req, res) => {
     })
     .eq('id', poap.id);
 
-  // Redirect to POAP mint link
   res.writeHead(302, { Location: poap.link });
   res.end();
 };
+
