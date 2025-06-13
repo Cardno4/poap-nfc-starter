@@ -1,7 +1,6 @@
 let poapLinks = [
-  { link: "http://POAP.xyz/mint/kekh02", used: false },
   { link: "http://POAP.xyz/mint/xcmrcn", used: false },
-  { link: "http://POAP.xyz/mint/w48dza", used: false }
+  { link: "http://POAP.xyz/mint/xcmrcn", used: false }
 ];
 
 export default function handler(req, res) {
