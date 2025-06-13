@@ -1,11 +1,11 @@
-import { createClient } from '@supabase/supabase-js';
+const { createClient } = require('@supabase/supabase-js');
 
 const supabase = createClient(
   process.env.SUPABASE_URL,
   process.env.SUPABASE_ANON_KEY
 );
 
-export default async function handler(req, res) {
+module.exports = async (req, res) => {
   const chipId = req.query.chip;
 
   if (!chipId) {
@@ -13,7 +13,7 @@ export default async function handler(req, res) {
     return;
   }
 
-  // Get next unused POAP link for this chip
+  // Fetch next unused POAP link for this chip
   const { data: poapLinks, error } = await supabase
     .from('poap_links')
     .select('*')
@@ -28,7 +28,7 @@ export default async function handler(req, res) {
 
   const poap = poapLinks[0];
 
-  // Mark the link as used
+  // Mark link as used
   await supabase
     .from('poap_links')
     .update({
@@ -37,7 +37,7 @@ export default async function handler(req, res) {
     })
     .eq('id', poap.id);
 
-  // Redirect to the POAP mint link
+  // Redirect to POAP mint link
   res.writeHead(302, { Location: poap.link });
   res.end();
-}
+};
