@@ -62,7 +62,7 @@ module.exports = async (req, res) => {
       <body>
         <h2>Oh no! This POAP is all out 😢</h2>
         <p>Thanks for tapping — but this one’s already been fully claimed.</p>
-        <img src="/pomo-sad.png" alt="All POAPs claimed">
+        <img src="/pomo-new.png" alt="All POAPs claimed">
       </body>
     </html>
   `);
