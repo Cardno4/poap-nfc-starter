@@ -43,19 +43,20 @@ module.exports = async (req, res) => {
     margin: 0;
   }
   h2 {
-    font-size: 2rem;
+    font-size: 2.5rem;
     margin-bottom: 0.5rem;
   }
   p {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     margin-top: 0;
   }
   img {
-    width: 90vw;        /* Fill most of the screen width */
-    max-width: 600px;   /* But cap it on large screens */
+    width: 95vw;
+    max-width: 800px;
     margin-top: 2rem;
   }
 </style>
+
 
       </head>
       <body>
