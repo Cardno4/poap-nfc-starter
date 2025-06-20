@@ -35,17 +35,27 @@ module.exports = async (req, res) => {
       <head>
         <title>POAP Claimed</title>
         <style>
-          body {
-            text-align: center;
-            font-family: sans-serif;
-            background: #f5f5f5;
-            padding: 2rem;
-          }
-          img {
-            width: 200px;
-            margin-top: 1rem;
-          }
-        </style>
+  body {
+    text-align: center;
+    font-family: sans-serif;
+    background: #f5f5f5;
+    padding: 2rem;
+    margin: 0;
+  }
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  p {
+    font-size: 1rem;
+    margin-top: 0;
+  }
+  img {
+    width: 60%;
+    max-width: 300px;
+    margin-top: 1.5rem;
+  }
+</style>
       </head>
       <body>
         <h2>Oh no! This POAP is all out 😢</h2>
