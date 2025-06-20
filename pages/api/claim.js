@@ -43,19 +43,20 @@ module.exports = async (req, res) => {
     margin: 0;
   }
   h2 {
-    font-size: 1.5rem;
+    font-size: 2rem;
     margin-bottom: 0.5rem;
   }
   p {
-    font-size: 1rem;
+    font-size: 1.2rem;
     margin-top: 0;
   }
   img {
-    width: 60%;
-    max-width: 300px;
-    margin-top: 1.5rem;
+    width: 90vw;        /* Fill most of the screen width */
+    max-width: 600px;   /* But cap it on large screens */
+    margin-top: 2rem;
   }
 </style>
+
       </head>
       <body>
         <h2>Oh no! This POAP is all out 😢</h2>
