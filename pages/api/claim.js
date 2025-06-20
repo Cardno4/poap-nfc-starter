@@ -30,10 +30,33 @@ module.exports = async (req, res) => {
   }
 
   if (!poapLinks || poapLinks.length === 0) {
-    console.log("No unused POAP links found for chip:", chipId);
-    res.status(200).send("All POAPs have been claimed for this chip.");
-    return;
-  }
+  res.status(200).send(`
+    <html>
+      <head>
+        <title>POAP Claimed</title>
+        <style>
+          body {
+            text-align: center;
+            font-family: sans-serif;
+            background: #f5f5f5;
+            padding: 2rem;
+          }
+          img {
+            width: 200px;
+            margin-top: 1rem;
+          }
+        </style>
+      </head>
+      <body>
+        <h2>Oh no! This POAP is all out 😢</h2>
+        <p>Thanks for tapping — but this one’s already been fully claimed.</p>
+        <img src="/pomo-sad.png" alt="All POAPs claimed">
+      </body>
+    </html>
+  `);
+  return;
+}
+
 
   const poap = poapLinks[0];
   console.log("Serving POAP link:", poap.link);
